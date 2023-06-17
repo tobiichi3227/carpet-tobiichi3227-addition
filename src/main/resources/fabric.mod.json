@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "id": "carpet-tobiichi3227-addition",
+  "version": "${version}",
+  "name": "carpet-tobiichi3227-addition",
+  "description": "A carpet addition for 208 classmates",
+  "authors": [
+    "tobiichi3227",
+    "Prince1109",
+    "ChenKaiLiuX"
+  ],
+  "contact": {
+    "homepage": "https://fabricmc.net/",
+    "sources": "https://github.com/tobiichi3227/"
+  },
+  "license": "MIT",
+  "icon": "assets/carpet-tobiichi3227-addition/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "net.tobiichi3227.carpet.addition.CarpetTobiichi3227AdditionMod"
+    ],
+    "client": [
+      "net.tobiichi3227.carpet.addition.ExampleModClient"
+    ]
+  },
+  "mixins": [
+    "carpet-tobiichi3227-addition.mixins.json",
+    {
+      "config": "carpet-tobiichi3227-addition.client.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "fabricloader": ">=0.14.21",
+    "minecraft": "~1.19.4",
+    "java": ">=17",
+    "fabric-api": "*",
+    "carpet": "${carpet_dependency}"
+  },
+  "suggests": {
+    "another-mod": "*"
+  },
+  "custom": {
+    "modmenu:parent": "carpet"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "package": "net.tobiichi3227.carpet.addition.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "ExampleMixin",
+    "rule.CreeperBurnsInDaylight.CreeperEntityMixin",
+    "rule.IllusionerSpawnAtRaid.RaidMixin",
+    "rule.VillagerCanBeLeashed.MerchantEntityMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

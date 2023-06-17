@@ -1,0 +1,13 @@
+{
+  "carpet.category.extra": "tobiichi3227",
+  "carpet.rule.villagerCanBeLeashed.name": "村民可以被拴繩拉動",
+  "carpet.rule.villagerCanBeLeashed.desc": "讓村民可以被拴繩拉動，方便運輸",
+  "carpet.rule.villagerCanBeLeashed.extra.0": "By ChenKaiLiuX",
+  "carpet.rule.creeperBurnInDaylight.name": "苦力怕自燃",
+  "carpet.rule.creeperBurnInDaylight.desc": "苦力怕會像殭屍一樣自燃",
+  "carpet.rule.creeperBurnInDaylight.extra.0": "By Prince1109",
+  "carpet.rule.illusionerSpawnAtRaid.name": "幻術師加入突襲",
+  "carpet.rule.illusionerSpawnAtRaid.desc": "幻術師會自然在突襲中生成",
+  "carpet.rule.illusionerSpawnAtRaid.extra.0": "僅限困難模式",
+  "carpet.rule.illusionerSpawnAtRaid.extra.1": "By tobiichi3227"
+}
