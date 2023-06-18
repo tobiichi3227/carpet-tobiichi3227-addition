@@ -9,5 +9,13 @@
   "carpet.rule.illusionerSpawnAtRaid.name": "幻術師加入突襲",
   "carpet.rule.illusionerSpawnAtRaid.desc": "幻術師會自然在突襲中生成",
   "carpet.rule.illusionerSpawnAtRaid.extra.0": "僅限困難模式",
-  "carpet.rule.illusionerSpawnAtRaid.extra.1": "By tobiichi3227"
+  "carpet.rule.illusionerSpawnAtRaid.extra.1": "By tobiichi3227",
+  "carpet.rule.playerSit.name": "玩家坐下",
+  "carpet.rule.playerSit.desc": "連續Shift三下後玩家可以坐下",
+  "carpet.rule.playerSit.extra.0": "By tobiichi3227",
+  "carpet.rule.playerSit.extra.1": "Thanks Plusls",
+  "carpet.rule.editableSign.name": "可編輯的告示牌",
+  "carpet.rule.editableSign.desc": "可以編輯已經放置的告示牌",
+  "carpet.rule.editableSign.extra.0": "By tobiichi3227",
+  "carpet.rule.editableSign.extra.1": "Thanks Ivan-1F"
 }

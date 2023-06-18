@@ -5,7 +5,10 @@
   "mixins": [
     "ExampleMixin",
     "rule.CreeperBurnsInDaylight.CreeperEntityMixin",
+    "rule.EditableSign.SignBlockEntityMixin",
     "rule.IllusionerSpawnAtRaid.RaidMixin",
+    "rule.PlayerSit.ArmorStandEntityMixin",
+    "rule.PlayerSit.MixinServerPlayerEntity",
     "rule.VillagerCanBeLeashed.MerchantEntityMixin"
   ],
   "injectors": {

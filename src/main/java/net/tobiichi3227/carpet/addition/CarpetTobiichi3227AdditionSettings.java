@@ -15,4 +15,10 @@ public class CarpetTobiichi3227AdditionSettings {
 
     @Rule(categories = {TOBIICHI3227})
     public static boolean creeperBurnInDaylight = false;
+
+    @Rule(categories = {TOBIICHI3227})
+    public static boolean playerSit = false;
+
+    @Rule(categories = {TOBIICHI3227})
+    public static boolean editableSign = false;
 }
