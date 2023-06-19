@@ -7,6 +7,9 @@
 editableSign
 playerSit
 
+1.2.0
+breakRedstoneTrapdoorEarly (地板門更新抑制器)
+
 todo:
 # TCTC
 commandOperator

@@ -17,5 +17,9 @@
   "carpet.rule.editableSign.name": "可編輯的告示牌",
   "carpet.rule.editableSign.desc": "可以編輯已經放置的告示牌",
   "carpet.rule.editableSign.extra.0": "By tobiichi3227",
-  "carpet.rule.editableSign.extra.1": "Thanks Ivan-1F"
+  "carpet.rule.editableSign.extra.1": "Thanks Ivan-1F",
+  "carpet.rule.breakRedstoneTrapdoorEarly.name": "修復地板門更新抑制器",
+  "carpet.rule.breakRedstoneTrapdoorEarly.desc": "對，我就想修，要用再開",
+  "carpet.rule.breakRedstoneTrapdoorEarly.extra.0": "By tobiichi3227",
+  "carpet.rule.breakRedstoneTrapdoorEarly.extra.1": "Thanks PaperMC Team"
 }
