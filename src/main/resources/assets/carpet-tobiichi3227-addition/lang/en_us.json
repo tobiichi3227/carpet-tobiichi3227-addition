@@ -14,12 +14,18 @@
   "carpet.rule.playerSit.desc": "連續Shift三下後玩家可以坐下",
   "carpet.rule.playerSit.extra.0": "By tobiichi3227",
   "carpet.rule.playerSit.extra.1": "Thanks Plusls",
-  "carpet.rule.editableSign.name": "可編輯的告示牌",
-  "carpet.rule.editableSign.desc": "可以編輯已經放置的告示牌",
-  "carpet.rule.editableSign.extra.0": "By tobiichi3227",
-  "carpet.rule.editableSign.extra.1": "Thanks Ivan-1F",
   "carpet.rule.breakRedstoneTrapdoorEarly.name": "修復地板門更新抑制器",
   "carpet.rule.breakRedstoneTrapdoorEarly.desc": "對，我就想修，要用再開",
   "carpet.rule.breakRedstoneTrapdoorEarly.extra.0": "By tobiichi3227",
-  "carpet.rule.breakRedstoneTrapdoorEarly.extra.1": "Thanks PaperMC Team"
+  "carpet.rule.breakRedstoneTrapdoorEarly.extra.1": "Thanks PaperMC Team",
+  "carpet.rule.largeEnderChest.name": "大終界箱",
+  "carpet.rule.largeEnderChest.desc": "兩倍大的終界箱",
+  "carpet.rule.largeEnderChest.extra.0": "By tobiichi3227",
+  "carpet.rule.largeEnderChest.extra.1": "Thanks Carpet-AMS-Addtion",
+  "carpet.rule.shulkerBoxCCEFix.name": "修復界伏盒CCE異常",
+  "carpet.rule.shulkerBoxCCEFix.desc": "對，又是更新抑制器的東西",
+  "carpet.rule.shulkerBoxCCEFix.extra.0": "By tobiichi3227",
+  "carpet.rule.evokerUseUndyOfTotem.name": "喚魔者會使用不死圖騰",
+  "carpet.rule.evokerUseUndyOfTotem.desc": "喚魔者能掉不死圖騰，但它卻不會用，帶心酸的嗎？",
+  "carpet.rule.evokerUseUndyOfTotem.extra.0": "By tobiichi3227"
 }

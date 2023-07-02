@@ -20,6 +20,7 @@ public class CarpetTobiichi3227AdditionMod implements ModInitializer {
         // Proceed with mild caution.
 
         CarpetTobiichi3227AdditionServer.init();
+        CarpetTobiichi3227AdditionSettings.setStackableItem();
     }
 
 

@@ -4,12 +4,18 @@
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "ExampleMixin",
-    "rule.BraekRedstoneTrapdoorEarly.TrapdoorBlockMixin",
+    "rule.ItemAccessor",
+    "rule.BreakRedstoneTrapdoorEarly.RedstoneWireBlockMixin",
     "rule.CreeperBurnsInDaylight.CreeperEntityMixin",
-    "rule.EditableSign.SignBlockEntityMixin",
+    "rule.EvokerUseUndyOfTotem.EvokerEntityMixin",
     "rule.IllusionerSpawnAtRaid.RaidMixin",
+    "rule.LargeEnderChest.EnderChestBlockMixin",
+    "rule.LargeEnderChest.PlayerEntityMixin",
+    "rule.LargeEnderChest.SimpleInventoryAccessor",
     "rule.PlayerSit.ArmorStandEntityMixin",
+    "rule.PlayerSit.IMixinEntity",
     "rule.PlayerSit.MixinServerPlayerEntity",
+    "rule.ShulkerBoxCCEFix.ShulkerBoxBlockMixin",
     "rule.VillagerCanBeLeashed.MerchantEntityMixin"
   ],
   "injectors": {

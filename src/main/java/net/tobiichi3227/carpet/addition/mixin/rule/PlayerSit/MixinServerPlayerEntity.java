@@ -19,6 +19,7 @@ import org.spongepowered.asm.mixin.Shadow;
 public abstract class MixinServerPlayerEntity extends PlayerEntity {
     @Shadow
     public ServerPlayNetworkHandler networkHandler;
+
     private int sneakTimes = 0;
     private long lastSneakTime = 0;
 
@@ -43,9 +44,9 @@ public abstract class MixinServerPlayerEntity extends PlayerEntity {
             if (this.isOnGround() && nowTime - lastSneakTime < 200) {
                 sneakTimes += 1;
                 if (sneakTimes == 3) {
-                    ArmorStandEntity armorStandEntity = new ArmorStandEntity(world, this.getX(), this.getY() - 0.16, this.getZ());
+                    ArmorStandEntity armorStandEntity = new ArmorStandEntity(((IMixinEntity) this).getWorld(), this.getX(), this.getY() - 0.16, this.getZ());
                     ((SitEntity) armorStandEntity).setSitEntity(true);
-                    world.spawnEntity(armorStandEntity);
+                    ((IMixinEntity) this).getWorld().spawnEntity(armorStandEntity);
                     this.setSneaking(false);
                     this.startRiding(armorStandEntity);
                     sneakTimes = 0;
