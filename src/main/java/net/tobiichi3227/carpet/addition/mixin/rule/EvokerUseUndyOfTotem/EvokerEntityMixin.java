@@ -1,9 +1,14 @@
 package net.tobiichi3227.carpet.addition.mixin.rule.EvokerUseUndyOfTotem;
 
+import net.minecraft.entity.EntityStatuses;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.damage.DamageSource;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.mob.EvokerEntity;
 import net.minecraft.entity.mob.SpellcastingIllagerEntity;
 import net.minecraft.world.World;
+import net.tobiichi3227.carpet.addition.CarpetTobiichi3227AdditionSettings;
 import org.spongepowered.asm.mixin.Mixin;
 
 @Mixin(EvokerEntity.class)
@@ -14,7 +19,6 @@ public abstract class EvokerEntityMixin extends SpellcastingIllagerEntity {
         super(entityType, world);
     }
 
-    /*
     @Override
     public void onDeath(DamageSource damageSource) {
 
@@ -31,5 +35,4 @@ public abstract class EvokerEntityMixin extends SpellcastingIllagerEntity {
 
         super.onDeath(damageSource);
     }
-     */
 }

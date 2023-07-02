@@ -18,6 +18,9 @@ breakRedstoneTrapdoorEarly (地板門更新抑制器)
 移除editableSign
 新增evokerUseUndyOfTotem
 
+1.3.1
+fix evokerUseUndyOfTotem error
+
 todo:
 # TCTC
 commandOperator
