@@ -8,7 +8,6 @@ import net.minecraft.util.math.random.Random;
 import net.minecraft.village.raid.Raid;
 import net.minecraft.world.Difficulty;
 import net.minecraft.world.LocalDifficulty;
-import net.tobiichi3227.carpet.addition.CarpetTobiichi3227AdditionMod;
 import net.tobiichi3227.carpet.addition.CarpetTobiichi3227AdditionSettings;
 import net.tobiichi3227.carpet.addition.helpers.rule.RaidMember;
 import org.jetbrains.annotations.Nullable;
@@ -108,7 +107,6 @@ public abstract class RaidMixin {
 
     @Redirect(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/village/raid/Raid;spawnNextWave(Lnet/minecraft/util/math/BlockPos;)V"))
     private void spawnNextWave(Raid instance, BlockPos pos) {
-        CarpetTobiichi3227AdditionMod.LOGGER.info("current wave: %d".formatted(wavesSpawned + 1));
         boolean isCaptainSet = false;
         int i = this.wavesSpawned + 1;
         this.totalHealth = 0.0f;
