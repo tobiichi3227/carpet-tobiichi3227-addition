@@ -2,8 +2,6 @@ package net.tobiichi3227.carpet.addition;
 
 
 import carpet.api.settings.Rule;
-import net.minecraft.item.Items;
-import net.tobiichi3227.carpet.addition.mixin.rule.ItemAccessor;
 
 public class CarpetTobiichi3227AdditionSettings {
     public static final String TOBIICHI3227 = "tobiichi3227";
@@ -35,9 +33,9 @@ public class CarpetTobiichi3227AdditionSettings {
     public static boolean evokerUseUndyOfTotem = false;
 
     public static void setStackableItem() {
-        ((ItemAccessor) Items.ENDER_PEARL).setMaxCount(64);
-        ((ItemAccessor) Items.EGG).setMaxCount(64);
-        ((ItemAccessor) Items.HONEY_BOTTLE).setMaxCount(64);
+//        ((ItemAccessor) Items.ENDER_PEARL).setMaxCount(64);
+//        ((ItemAccessor) Items.EGG).setMaxCount(64);
+//        ((ItemAccessor) Items.HONEY_BOTTLE).setMaxCount(64);
 
         //https://modrinth.com/mod/stackables
     }
