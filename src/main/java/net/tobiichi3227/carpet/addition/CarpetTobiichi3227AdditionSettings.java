@@ -31,12 +31,4 @@ public class CarpetTobiichi3227AdditionSettings {
 
     @Rule(categories = {TOBIICHI3227})
     public static boolean evokerUseUndyOfTotem = false;
-
-    public static void setStackableItem() {
-//        ((ItemAccessor) Items.ENDER_PEARL).setMaxCount(64);
-//        ((ItemAccessor) Items.EGG).setMaxCount(64);
-//        ((ItemAccessor) Items.HONEY_BOTTLE).setMaxCount(64);
-
-        //https://modrinth.com/mod/stackables
-    }
 }
