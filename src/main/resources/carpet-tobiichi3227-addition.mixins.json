@@ -13,9 +13,6 @@
         "rule.LargeEnderChest.EnderChestBlockMixin",
         "rule.LargeEnderChest.PlayerEntityMixin",
         "rule.LargeEnderChest.SimpleInventoryAccessor",
-        "rule.PlayerSit.ArmorStandEntityMixin",
-        "rule.PlayerSit.IMixinEntity",
-        "rule.PlayerSit.MixinServerPlayerEntity",
         "rule.VillagerCanBeLeashed.MerchantEntityMixin"
     ],
     "injectors": {

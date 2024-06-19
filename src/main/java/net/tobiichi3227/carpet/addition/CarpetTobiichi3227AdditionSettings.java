@@ -18,9 +18,6 @@ public class CarpetTobiichi3227AdditionSettings {
     public static boolean creeperBurnInDaylight = false;
 
     @Rule(categories = {TOBIICHI3227})
-    public static boolean playerSit = false;
-
-    @Rule(categories = {TOBIICHI3227})
     public static boolean breakRedstoneTrapdoorEarly = true;
 
     @Rule(categories = {TOBIICHI3227})
