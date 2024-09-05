@@ -4,7 +4,6 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.Npc;
 import net.minecraft.entity.passive.MerchantEntity;
 import net.minecraft.entity.passive.PassiveEntity;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.village.Merchant;
 import net.minecraft.world.World;
 import net.tobiichi3227.carpet.addition.CarpetTobiichi3227AdditionSettings;
@@ -21,7 +20,7 @@ public abstract class MerchantEntityMixin extends PassiveEntity implements Npc, 
 
 
     @Override
-    public boolean canBeLeashedBy(PlayerEntity player) {
+            public boolean canBeLeashed() {
         return !this.isLeashed() && CarpetTobiichi3227AdditionSettings.villagerCanBeLeashed;
     }
 }
