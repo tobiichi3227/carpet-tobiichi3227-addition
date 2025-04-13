@@ -30,4 +30,6 @@ public class CarpetTobiichi3227Translations {
         return gson.fromJson(jsonData, new TypeToken<Map<String, String>>() {
         }.getType());
     }
+
+    private void CarpetTobiichi3227Translations() {}
 }

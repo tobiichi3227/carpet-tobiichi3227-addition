@@ -14,10 +14,10 @@ public enum RaidMember {
 
     ILLUSIONER(EntityType.ILLUSIONER, new int[]{0, 0, 0, 0, 0, 0, 1, 2});
 
-    public static final RaidMember[] VALUES = (Arrays.stream(values()).filter(raidMember -> {
-        return raidMember.type != EntityType.ILLUSIONER;
-    }).toArray(RaidMember[]::new));
-    public static final RaidMember[] VALUES_WITH_ILLUSIONER = values();
+    public static final RaidMember[] MEMBER_WITHOUT_ILLUSIONER = (Arrays.stream(values()).filter(
+        raidMember -> raidMember.type != EntityType.ILLUSIONER
+    ).toArray(RaidMember[]::new));
+    public static final RaidMember[] MEMBER_WITH_ILLUSIONER = values();
     public final EntityType<? extends RaiderEntity> type;
     public final int[] countInWave;
 

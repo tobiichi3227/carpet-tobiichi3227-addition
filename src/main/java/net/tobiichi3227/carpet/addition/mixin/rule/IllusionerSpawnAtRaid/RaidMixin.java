@@ -113,7 +113,7 @@ public abstract class RaidMixin {
         LocalDifficulty localDifficulty = this.world.getLocalDifficulty(pos);
         boolean bl2 = this.isSpawningExtraWave();
 
-        for (RaidMember member : (CarpetTobiichi3227AdditionSettings.illusionerSpawnAtRaid ? RaidMember.VALUES_WITH_ILLUSIONER : RaidMember.VALUES)) {
+        for (RaidMember member : (CarpetTobiichi3227AdditionSettings.illusionerSpawnAtRaid ? RaidMember.MEMBER_WITH_ILLUSIONER : RaidMember.MEMBER_WITHOUT_ILLUSIONER)) {
             RaiderEntity raiderEntity;
 
             //getCount means base number getBonusCount means random number by chance
@@ -137,24 +137,22 @@ public abstract class RaidMixin {
                 // spawn passenger at ravager
                 if (member.type != EntityType.RAVAGER) {
                     continue;
-                } else {
-                    RaiderEntity ravagerEntity = null;
-                    if (i == this.getMaxWaves(Difficulty.NORMAL)) {
-                        // pillager will spawn in normal mode
-                        ravagerEntity = EntityType.PILLAGER.create(this.world);
-                    } else if (i >= this.getMaxWaves(Difficulty.HARD)) {
-                        ravagerEntity = ravagerSpawnCnt == 0 ? (RaiderEntity) EntityType.EVOKER.create(this.world) : (RaiderEntity) EntityType.VINDICATOR.create(this.world);
-                    }
-
-                    ++ravagerSpawnCnt;
-                    if (ravagerEntity == null) {
-                        continue;
-                    } else {
-                        this.addRaider(i, ravagerEntity, pos, false);
-                        ravagerEntity.refreshPositionAndAngles(pos, 0.0f, 0.0f);
-                        ravagerEntity.startRiding(raiderEntity);
-                    }
                 }
+                RaiderEntity ravagerEntity = null;
+                if (i == this.getMaxWaves(Difficulty.NORMAL)) {
+                    // pillager will spawn in normal mode
+                    ravagerEntity = EntityType.PILLAGER.create(this.world);
+                } else if (i >= this.getMaxWaves(Difficulty.HARD)) {
+                    ravagerEntity = ravagerSpawnCnt == 0 ? (RaiderEntity) EntityType.EVOKER.create(this.world) : (RaiderEntity) EntityType.VINDICATOR.create(this.world);
+                }
+
+                ++ravagerSpawnCnt;
+                if (ravagerEntity == null) {
+                    continue;
+                }
+                this.addRaider(i, ravagerEntity, pos, false);
+                ravagerEntity.refreshPositionAndAngles(pos, 0.0f, 0.0f);
+                ravagerEntity.startRiding(raiderEntity);
             }
         }
 
@@ -163,6 +161,5 @@ public abstract class RaidMixin {
 
         this.updateBar();
         this.markDirty();
-
     }
 }

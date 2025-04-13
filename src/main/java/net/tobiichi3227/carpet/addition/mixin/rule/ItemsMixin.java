@@ -39,4 +39,6 @@ public class ItemsMixin {
     private static Item.Settings modifySnowball(Item.Settings settings) {
         return new Item.Settings().maxCount(64);
     }
+
+    private ItemsMixin() {}
 }

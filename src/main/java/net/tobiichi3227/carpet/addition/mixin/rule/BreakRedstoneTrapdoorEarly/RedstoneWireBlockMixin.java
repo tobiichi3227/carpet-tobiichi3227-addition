@@ -61,6 +61,5 @@ public abstract class RedstoneWireBlockMixin {
             return;
         }
         cir.setReturnValue(WireConnection.NONE);
-        return;
     }
 }
