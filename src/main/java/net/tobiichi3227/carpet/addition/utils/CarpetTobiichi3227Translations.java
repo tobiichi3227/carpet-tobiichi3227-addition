@@ -31,5 +31,5 @@ public class CarpetTobiichi3227Translations {
         }.getType());
     }
 
-    private void CarpetTobiichi3227Translations() {}
+    private CarpetTobiichi3227Translations() {}
 }

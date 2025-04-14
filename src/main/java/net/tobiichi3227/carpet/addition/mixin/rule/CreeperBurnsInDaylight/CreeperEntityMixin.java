@@ -15,10 +15,11 @@ public class CreeperEntityMixin extends HostileEntity {
 
     @Override
     public void tickMovement() {
-        if (CarpetTobiichi3227AdditionSettings.creeperBurnInDaylight) {
-            if (this.isAlive() && this.isAffectedByDaylight()) {
-                this.setOnFireFor(8);
-            }
+        if (CarpetTobiichi3227AdditionSettings.creeperBurnInDaylight &&
+            this.isAlive() && this.isAffectedByDaylight())
+        {
+
+            this.setOnFireFor(8);
         }
 
         super.tickMovement();

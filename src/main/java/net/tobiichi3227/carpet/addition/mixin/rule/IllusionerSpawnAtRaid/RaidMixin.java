@@ -14,6 +14,7 @@ import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
@@ -60,10 +61,12 @@ public abstract class RaidMixin {
     @Shadow
     protected abstract void markDirty();
 
+    @Unique
     private int getCount(RaidMember member, int wave, boolean extra) {
         return extra ? member.countInWave[this.waveCount] : member.countInWave[wave];
     }
 
+    @Unique
     private int getBonusCount(RaidMember member, Random random, int wave, LocalDifficulty localDifficulty, boolean extra) {
         int i;
         Difficulty difficulty = localDifficulty.getGlobalDifficulty();
@@ -105,61 +108,81 @@ public abstract class RaidMixin {
         return i > 0 ? random.nextInt(i + 1) : 0;
     }
 
-    @Redirect(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/village/raid/Raid;spawnNextWave(Lnet/minecraft/util/math/BlockPos;)V"))
-    private void spawnNextWave(Raid instance, BlockPos pos) {
-        boolean isCaptainSet = false;
-        int i = this.wavesSpawned + 1;
-        this.totalHealth = 0.0f;
-        LocalDifficulty localDifficulty = this.world.getLocalDifficulty(pos);
-        boolean bl2 = this.isSpawningExtraWave();
+    private boolean spawnRavagerRaider(int wave, int ravagerSpawnCnt, BlockPos spawnPos, RaiderEntity raiderEntity) {
+        RaiderEntity ravagerEntity = null;
+        if (wave == this.getMaxWaves(Difficulty.NORMAL)) {
+            // pillager will spawn in normal mode
+            ravagerEntity = (RaiderEntity) EntityType.PILLAGER.create(this.world);
 
-        for (RaidMember member : (CarpetTobiichi3227AdditionSettings.illusionerSpawnAtRaid ? RaidMember.MEMBER_WITH_ILLUSIONER : RaidMember.MEMBER_WITHOUT_ILLUSIONER)) {
-            RaiderEntity raiderEntity;
+        } else if (wave >= this.getMaxWaves(Difficulty.HARD)) {
+            if (ravagerSpawnCnt == 0) {
+                ravagerEntity = (RaiderEntity) EntityType.EVOKER.create(this.world);
+            } else {
+                ravagerEntity = (RaiderEntity) EntityType.VINDICATOR.create(this.world);
+            }
+        } else {
+            return false;
+        }
 
-            //getCount means base number getBonusCount means random number by chance
-            int spawnCnt = this.getCount(member, i, bl2) + this.getBonusCount(member, this.random, i, localDifficulty, bl2);
-            int ravagerSpawnCnt = 0;
-            for (int l = 0; l < spawnCnt && (raiderEntity = member.type.create(this.world)) != null; ++l) {
-                if (raiderEntity.getType() == EntityType.ILLUSIONER) {
-                    raiderEntity.setGlowing(true);
-                }
+        this.addRaider(wave, ravagerEntity, spawnPos, false);
+        ravagerEntity.refreshPositionAndAngles(spawnPos, 0.0f, 0.0f);
+        ravagerEntity.startRiding(raiderEntity);
+        return true;
+    }
 
-                if (!isCaptainSet && raiderEntity.canLead()) {
-                    //set patrol captain
-                    raiderEntity.setPatrolLeader(true);
-                    this.setWaveCaptain(i, raiderEntity);
-                    isCaptainSet = true;
-                }
+    private int getSpawnCount(RaidMember member, int wave, LocalDifficulty difficulty, boolean extra) {
+        // getCount means base number getBonusCount means random number by chance
+        return this.getCount(member, wave, extra) + this.getBonusCount(member, this.random, wave, difficulty, extra);
+    }
 
-                // spawn raider
-                this.addRaider(i, raiderEntity, pos, false);
+    private boolean spawnRaiders(int wave, int count, BlockPos pos, RaidMember member, boolean captainSet) {
+        int ravagerCnt = 0;
 
-                // spawn passenger at ravager
-                if (member.type != EntityType.RAVAGER) {
-                    continue;
-                }
-                RaiderEntity ravagerEntity = null;
-                if (i == this.getMaxWaves(Difficulty.NORMAL)) {
-                    // pillager will spawn in normal mode
-                    ravagerEntity = EntityType.PILLAGER.create(this.world);
-                } else if (i >= this.getMaxWaves(Difficulty.HARD)) {
-                    ravagerEntity = ravagerSpawnCnt == 0 ? (RaiderEntity) EntityType.EVOKER.create(this.world) : (RaiderEntity) EntityType.VINDICATOR.create(this.world);
-                }
+        for (int i = 0; i < count; i++) {
+            RaiderEntity raider = member.type.create(this.world);
+            if (raider == null) continue;
 
-                ++ravagerSpawnCnt;
-                if (ravagerEntity == null) {
-                    continue;
-                }
-                this.addRaider(i, ravagerEntity, pos, false);
-                ravagerEntity.refreshPositionAndAngles(pos, 0.0f, 0.0f);
-                ravagerEntity.startRiding(raiderEntity);
+            if (raider.getType() == EntityType.ILLUSIONER) {
+                raider.setGlowing(true);
+            }
+
+            if (!captainSet && raider.canLead()) {
+                raider.setPatrolLeader(true);
+                this.setWaveCaptain(wave, raider);
+                captainSet = true;
+            }
+
+            this.addRaider(wave, raider, pos, false);
+
+            if (member.type == EntityType.RAVAGER && spawnRavagerRaider(wave, ravagerCnt, pos, raider)) {
+                ravagerCnt++;
             }
         }
 
-        this.preCalculatedRavagerSpawnLocation = Optional.empty();
-        ++this.wavesSpawned;
+        return captainSet;
+    }
 
+    @Redirect(method = "tick", at = @At(value = "INVOKE", target = "Lnet/minecraft/village/raid/Raid;spawnNextWave(Lnet/minecraft/util/math/BlockPos;)V"))
+    private void spawnNextWave(Raid instance, BlockPos spawnPos) {
+        int wave = this.wavesSpawned + 1;
+        this.totalHealth = 0.0f;
+
+        boolean isSpawningExtra = this.isSpawningExtraWave();
+        LocalDifficulty localDiff = this.world.getLocalDifficulty(spawnPos);
+        RaidMember[] members = CarpetTobiichi3227AdditionSettings.illusionerSpawnAtRaid
+            ? RaidMember.MEMBER_WITH_ILLUSIONER
+            : RaidMember.MEMBER_WITHOUT_ILLUSIONER;
+
+        boolean captainSet = false;
+        for (RaidMember member : members) {
+            int spawnCount = getSpawnCount(member, wave, localDiff, isSpawningExtra);
+            captainSet = spawnRaiders(wave, spawnCount, spawnPos, member, captainSet);
+        }
+
+        this.preCalculatedRavagerSpawnLocation = Optional.empty();
+        this.wavesSpawned++;
         this.updateBar();
         this.markDirty();
     }
+
 }

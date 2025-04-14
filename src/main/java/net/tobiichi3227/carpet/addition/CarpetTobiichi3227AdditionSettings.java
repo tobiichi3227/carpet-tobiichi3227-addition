@@ -4,7 +4,7 @@ package net.tobiichi3227.carpet.addition;
 import carpet.api.settings.Rule;
 
 public class CarpetTobiichi3227AdditionSettings {
-    private void CarpetTobiichi3227AdditionSettings() {}
+    private CarpetTobiichi3227AdditionSettings() {}
     public static final String TOBIICHI3227 = "tobiichi3227";
     public static final String TOBIICHI3227_FIX = "tobiichi3227_fix";
     public static final String CARPET_MOD = "carpet_mod";
