@@ -51,15 +51,16 @@ public abstract class VillagerEntityMixin implements Lobotomizable {
     }
 
     @Inject(method = "mobTick", at = @At("TAIL"))
-    private void onMobTickTail(ServerWorld world, CallbackInfo ci) {
+    private void onMobTickTail(CallbackInfo ci) {
         if (!CarpetTobiichi3227AdditionSettings.villagerLobotomize || !this.lobotomized) {
             return;
         }
+        VillagerEntity self = (VillagerEntity) (Object) this;
+        ServerWorld world = (ServerWorld) self.getWorld();
         long currentTime = world.getTime();
         if (currentTime - this.lobotomizedLastRestockTime < RESTOCK_CHECK_INTERVAL) {
             return;
         }
-        VillagerEntity self = (VillagerEntity) (Object) this;
         TradeOfferList offers = self.getOffers();
         if (offers == null) {
             return;
