@@ -1,6 +1,5 @@
 package net.tobiichi3227.carpet.addition.mixin.rule.VillagerLobotomize;
 
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.brain.Brain;
 import net.minecraft.entity.passive.VillagerEntity;
 import net.minecraft.nbt.NbtCompound;
@@ -30,13 +29,13 @@ public abstract class VillagerEntityMixin implements Lobotomizable {
     }
 
     @Redirect(
-        method = "mobTick(Lnet/minecraft/server/world/ServerWorld;)V",
+        method = "mobTick",
         at = @At(
             value = "INVOKE",
             target = "Lnet/minecraft/entity/ai/brain/Brain;tick(Lnet/minecraft/server/world/ServerWorld;Lnet/minecraft/entity/LivingEntity;)V"
         )
     )
-    private void redirectBrainTick(Brain<?> brain, ServerWorld world, LivingEntity entity) {
+    private void redirectBrainTick(Brain<VillagerEntity> brain, ServerWorld world, VillagerEntity entity) {
         if (!CarpetTobiichi3227AdditionSettings.villagerLobotomize || !this.lobotomized) {
             brain.tick(world, entity);
         }
