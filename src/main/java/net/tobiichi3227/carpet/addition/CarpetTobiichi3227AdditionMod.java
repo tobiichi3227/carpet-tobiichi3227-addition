@@ -1,6 +1,8 @@
 package net.tobiichi3227.carpet.addition;
 
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
+import net.tobiichi3227.carpet.addition.commands.VillagerLobotomizeCommand;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,6 +22,10 @@ public class CarpetTobiichi3227AdditionMod implements ModInitializer {
         // Proceed with mild caution.
 
         CarpetTobiichi3227AdditionServer.init();
+
+        CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) ->
+            VillagerLobotomizeCommand.register(dispatcher)
+        );
     }
 
 

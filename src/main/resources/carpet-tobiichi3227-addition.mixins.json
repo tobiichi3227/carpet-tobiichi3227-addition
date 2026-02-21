@@ -13,7 +13,8 @@
         "rule.LargeEnderChest.EnderChestBlockMixin",
         "rule.LargeEnderChest.PlayerEntityMixin",
         "rule.LargeEnderChest.SimpleInventoryAccessor",
-        "rule.VillagerCanBeLeashed.MerchantEntityMixin"
+        "rule.VillagerCanBeLeashed.MerchantEntityMixin",
+        "rule.VillagerLobotomize.VillagerEntityMixin"
     ],
     "injectors": {
         "defaultRequire": 1

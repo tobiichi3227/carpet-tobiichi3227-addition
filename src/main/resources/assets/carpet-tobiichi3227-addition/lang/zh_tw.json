@@ -27,5 +27,17 @@
   "carpet.rule.shulkerBoxCCEFix.extra.0": "By tobiichi3227",
   "carpet.rule.evokerUseUndyOfTotem.name": "喚魔者會使用不死圖騰",
   "carpet.rule.evokerUseUndyOfTotem.desc": "喚魔者能掉不死圖騰，但它卻不會用，帶心酸的嗎？",
-  "carpet.rule.evokerUseUndyOfTotem.extra.0": "By tobiichi3227"
+  "carpet.rule.evokerUseUndyOfTotem.extra.0": "By tobiichi3227",
+  "carpet.rule.villagerLobotomize.name": "村民葉切術",
+  "carpet.rule.villagerLobotomize.desc": "啟用後可透過 /lobotomize 指令手動切換每隻村民的葉切術狀態，減少村民 AI 帶來的效能負擔",
+  "carpet.rule.villagerLobotomize.extra.0": "By tobiichi3227",
+  "carpet.rule.villagerLobotomize.extra.1": "參考 VillagerLobotimizer 與 ServerCore",
+  "commands.lobotomize.disabled": "villagerLobotomize 規則未啟用",
+  "commands.lobotomize.no_target": "請對著村民使用此指令",
+  "commands.lobotomize.toggle.on": "已啟用村民葉切術",
+  "commands.lobotomize.toggle.off": "已停用村民葉切術",
+  "commands.lobotomize.all": "已對 %s 隻村民啟用葉切術",
+  "commands.lobotomize.restore": "已對 %s 隻村民停用葉切術",
+  "commands.lobotomize.status.on": "此村民已啟用葉切術",
+  "commands.lobotomize.status.off": "此村民未啟用葉切術"
 }
