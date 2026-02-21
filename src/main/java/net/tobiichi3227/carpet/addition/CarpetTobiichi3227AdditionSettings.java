@@ -29,4 +29,7 @@ public class CarpetTobiichi3227AdditionSettings {
 
     @Rule(categories = {TOBIICHI3227})
     public static boolean evokerUseUndyOfTotem = false;
+
+    @Rule(categories = {TOBIICHI3227})
+    public static boolean villagerLobotomize = false;
 }

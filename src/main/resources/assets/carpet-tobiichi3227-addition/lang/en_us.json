@@ -27,5 +27,17 @@
   "carpet.rule.shulkerBoxCCEFix.extra.0": "By tobiichi3227",
   "carpet.rule.evokerUseUndyOfTotem.name": "喚魔者會使用不死圖騰",
   "carpet.rule.evokerUseUndyOfTotem.desc": "喚魔者能掉不死圖騰，但它卻不會用，帶心酸的嗎？",
-  "carpet.rule.evokerUseUndyOfTotem.extra.0": "By tobiichi3227"
+  "carpet.rule.evokerUseUndyOfTotem.extra.0": "By tobiichi3227",
+  "carpet.rule.villagerLobotomize.name": "Villager Lobotomize",
+  "carpet.rule.villagerLobotomize.desc": "When enabled, use /lobotomize to toggle each villager's lobotomize state and reduce villager AI performance overhead",
+  "carpet.rule.villagerLobotomize.extra.0": "By tobiichi3227",
+  "carpet.rule.villagerLobotomize.extra.1": "Inspired by VillagerLobotimizer and ServerCore",
+  "commands.lobotomize.disabled": "villagerLobotomize rule is not enabled",
+  "commands.lobotomize.no_target": "Please look at a villager to use this command",
+  "commands.lobotomize.toggle.on": "Villager lobotomize enabled",
+  "commands.lobotomize.toggle.off": "Villager lobotomize disabled",
+  "commands.lobotomize.all": "Lobotomized %s villager(s)",
+  "commands.lobotomize.restore": "Restored %s villager(s)",
+  "commands.lobotomize.status.on": "This villager is lobotomized",
+  "commands.lobotomize.status.off": "This villager is not lobotomized"
 }
