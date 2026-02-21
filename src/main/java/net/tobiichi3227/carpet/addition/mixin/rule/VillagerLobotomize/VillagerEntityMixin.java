@@ -5,10 +5,11 @@ import net.minecraft.entity.ai.brain.Brain;
 import net.minecraft.entity.passive.VillagerEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.village.TradeOffer;
+import net.minecraft.village.TradeOfferList;
 import net.tobiichi3227.carpet.addition.CarpetTobiichi3227AdditionSettings;
 import net.tobiichi3227.carpet.addition.utils.Lobotomizable;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -17,17 +18,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(VillagerEntity.class)
 public abstract class VillagerEntityMixin implements Lobotomizable {
-    @Shadow
-    public abstract boolean needsRestock();
-
-    @Shadow
-    public abstract boolean shouldRestock(ServerWorld world);
-
-    @Shadow
-    public abstract void restock();
-
     @Unique
     private boolean lobotomized = false;
+
+    @Unique
+    private static final long RESTOCK_CHECK_INTERVAL = 12000L;
+
+    @Unique
+    private long lobotomizedLastRestockTime = 0L;
 
     @Override
     public boolean isLobotomized() {
@@ -57,8 +55,24 @@ public abstract class VillagerEntityMixin implements Lobotomizable {
         if (!CarpetTobiichi3227AdditionSettings.villagerLobotomize || !this.lobotomized) {
             return;
         }
-        if (this.shouldRestock(world) && this.needsRestock()) {
-            this.restock();
+        long currentTime = world.getTime();
+        if (currentTime - this.lobotomizedLastRestockTime < RESTOCK_CHECK_INTERVAL) {
+            return;
+        }
+        VillagerEntity self = (VillagerEntity) (Object) this;
+        TradeOfferList offers = self.getOffers();
+        if (offers == null) {
+            return;
+        }
+        boolean restocked = false;
+        for (TradeOffer offer : offers) {
+            if (offer.getUses() > 0) {
+                offer.resetUses();
+                restocked = true;
+            }
+        }
+        if (restocked) {
+            this.lobotomizedLastRestockTime = currentTime;
         }
     }
 
