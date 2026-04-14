@@ -33,6 +33,11 @@ public class ArmadilloEntityMixin extends AnimalEntity {
 
     @Override
     public boolean damage(DamageSource source, float amount) {
-        return source.isOf(DamageTypes.OUT_OF_WORLD);
+        if (source.isOf(DamageTypes.OUT_OF_WORLD)) {
+            return super.damage(source, amount);
+        }
+
+        // allow knockback effect
+        return super.damage(source, 0.0F);
     }
 }
